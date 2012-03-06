@@ -1,0 +1,37 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.6
+version = '1.0'
+
+springFrameworkVersion = '3.1.1.RELEASE'
+
+sourceSets {
+    'main' {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+            srcDir 'src/main/java'
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Spring External Configuration', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.springframework', name: 'spring-context', version: springFrameworkVersion
+    compile group: 'cglib', name: 'cglib', version: '2.2.2'
+
+    testCompile group: 'org.springframework', name: 'spring-test', version: springFrameworkVersion
+    testCompile group: 'junit', name: 'junit', version: '4.8.2'
+}
