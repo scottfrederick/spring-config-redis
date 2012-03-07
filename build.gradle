@@ -4,10 +4,8 @@ apply plugin: 'idea'
 sourceCompatibility = 1.6
 version = '1.0'
 
-springFrameworkVersion = '3.1.1.RELEASE'
-
 sourceSets {
-    'main' {
+    main {
         java {
             srcDir 'src/main/java'
         }
@@ -29,9 +27,16 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.springframework', name: 'spring-context', version: springFrameworkVersion
+    // Spring and dependencies
+    compile group: 'org.springframework', name: 'spring-context', version: springVersion
     compile group: 'cglib', name: 'cglib', version: '2.2.2'
 
-    testCompile group: 'org.springframework', name: 'spring-test', version: springFrameworkVersion
+    // Spring Data
+    compile(group: 'org.springframework.data', name: 'spring-data-redis', version: springDataRedisVersion) {
+        exclude group: 'commons-logging'
+    }
+
+    // Testing
+    testCompile group: 'org.springframework', name: 'spring-test', version: springVersion
     testCompile group: 'junit', name: 'junit', version: '4.8.2'
 }

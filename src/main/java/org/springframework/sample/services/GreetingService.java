@@ -1,4 +1,4 @@
-package org.springframework.sample;
+package org.springframework.sample.services;
 
 public class GreetingService {
     private String hello;

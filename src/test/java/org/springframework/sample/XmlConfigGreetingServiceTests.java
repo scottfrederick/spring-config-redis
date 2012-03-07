@@ -4,6 +4,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.sample.services.GreetingService;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -11,7 +13,8 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration
+@ContextConfiguration(locations = "classpath:/spring/app-context.xml")
+@ActiveProfiles("test")
 public class XmlConfigGreetingServiceTests {
 
     @Autowired
@@ -20,10 +23,6 @@ public class XmlConfigGreetingServiceTests {
     @BeforeClass
     public static void setUp() {
         System.setProperty("greeting.welcome", "Welcome, from System.properties");
-
-        if (System.getProperty("spring.profiles.active") == null) {
-            System.setProperty("spring.profiles.active", "test");
-        }
     }
 
     @Test
