@@ -2,7 +2,6 @@ package org.springframework.sample.app;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.env.redis.RedisPropertySource;
 import org.springframework.sample.config.AppConfig;
 import org.springframework.sample.config.PropertySourceConfig;
@@ -10,9 +9,7 @@ import org.springframework.sample.services.GreetingService;
 
 public class GreetingAppJavaConfig {
     public void run() {
-        ApplicationContext parentContext = createParentContext();
-
-        ApplicationContext context = createAppContext(parentContext);
+        ApplicationContext context = createAppContext();
 
         GreetingService greetingService = context.getBean(GreetingService.class);
 
@@ -20,7 +17,9 @@ public class GreetingAppJavaConfig {
         System.out.println(greetingService.getWelcomeMessage());
     }
 
-    private static ApplicationContext createAppContext(ApplicationContext parentContext) {
+    private static ApplicationContext createAppContext() {
+        ApplicationContext parentContext = createParentContext();
+
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.setParent(parentContext);
         context.register(AppConfig.class);

@@ -7,9 +7,7 @@ import org.springframework.sample.services.GreetingService;
 
 public class GreetingAppXmlConfig {
     public void run() {
-        ApplicationContext parentContext = createParentContext();
-
-        ApplicationContext context = createAppContext(parentContext);
+        ApplicationContext context = createAppContext();
 
         GreetingService greetingService = context.getBean(GreetingService.class);
 
@@ -17,15 +15,14 @@ public class GreetingAppXmlConfig {
         System.out.println(greetingService.getWelcomeMessage());
     }
 
-    private static ApplicationContext createAppContext(ApplicationContext parentContext) {
+    private static ApplicationContext createAppContext() {
+        ApplicationContext parentContext = createParentContext();
+
         String[] locations = {"classpath:/spring/app-context.xml"};
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(locations, parentContext);
-        context.refresh();
-        return context;
+        return new ClassPathXmlApplicationContext(locations, parentContext);
     }
 
     private static ApplicationContext createParentContext() {
-
         ClassPathXmlApplicationContext context =
                 new ClassPathXmlApplicationContext("classpath:/spring/property-source-context.xml");
         context.refresh();
