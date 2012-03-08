@@ -2,6 +2,7 @@ package org.springframework.sample.app;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.PropertySource;
 import org.springframework.env.redis.RedisPropertySource;
 import org.springframework.sample.config.AppConfig;
 import org.springframework.sample.config.PropertySourceConfig;
@@ -17,25 +18,22 @@ public class GreetingAppJavaConfig {
         System.out.println(greetingService.getWelcomeMessage());
     }
 
-    private static ApplicationContext createAppContext() {
-        ApplicationContext parentContext = createParentContext();
-
+    private ApplicationContext createAppContext() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.setParent(parentContext);
+
+        context.getEnvironment().getPropertySources().addFirst(getPropertySource());
+
         context.register(AppConfig.class);
         context.refresh();
+
         return context;
     }
 
-    private static ApplicationContext createParentContext() {
+    private PropertySource getPropertySource() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.register(PropertySourceConfig.class);
         context.refresh();
 
-        RedisPropertySource propertySource = context.getBean(RedisPropertySource.class);
-
-        context.getEnvironment().getPropertySources().addFirst(propertySource);
-
-        return context;
+        return context.getBean(RedisPropertySource.class);
     }
 }

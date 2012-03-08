@@ -18,6 +18,12 @@ public class RedisPropertySource extends PropertySource<RedisRepository> {
 
     @Override
     public Object getProperty(String name) {
-        return repository.getProperty(name);
+        try {
+            return repository.getProperty(name);
+        }
+        catch (Exception e) {
+            logger.error("Error accessing properties from Redis: " + e.getMessage());
+            return null;
+        }
     }
 }
