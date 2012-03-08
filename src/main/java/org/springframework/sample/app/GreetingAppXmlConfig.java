@@ -1,7 +1,6 @@
 package org.springframework.sample.app;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.env.PropertySource;
 import org.springframework.env.redis.RedisPropertySource;
