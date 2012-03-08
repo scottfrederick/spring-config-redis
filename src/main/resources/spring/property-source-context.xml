@@ -16,7 +16,7 @@
         <constructor-arg name="connectionFactory" ref="redisConnectionFactory"/>
     </bean>
 
-    <beans>
+    <beans profile="default">
         <bean id="redisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
             <property name="usePool" value="true"/>
         </bean>

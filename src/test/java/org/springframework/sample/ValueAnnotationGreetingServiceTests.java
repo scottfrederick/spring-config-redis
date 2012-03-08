@@ -19,7 +19,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(loader = CustomAnnotationConfigContextLoader.class)
 @ActiveProfiles("test")
 public class ValueAnnotationGreetingServiceTests {
 

@@ -15,7 +15,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = {AppConfig.class})
+@ContextConfiguration(loader = CustomAnnotationConfigContextLoader.class, classes = {AppConfig.class})
 @ActiveProfiles("test")
 public class EnvironmentGreetingServiceTests {
 

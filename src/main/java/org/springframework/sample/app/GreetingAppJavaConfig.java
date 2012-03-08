@@ -30,9 +30,7 @@ public class GreetingAppJavaConfig {
     }
 
     private PropertySource getPropertySource() {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(PropertySourceConfig.class);
-        context.refresh();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PropertySourceConfig.class);
 
         return context.getBean(RedisPropertySource.class);
     }
