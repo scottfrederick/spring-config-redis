@@ -14,6 +14,12 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <context-param>
+        <param-name>contextInitializerClasses</param-name>
+        <param-value>org.springframework.sample.web.XmlConfigPropertySourceInitializer</param-value>
+        <!-- <param-value>org.springframework.sample.web.JavaConfigPropertySourceInitializer</param-value> -->
+    </context-param>
+
     <!-- Processes application requests -->
     <servlet>
         <servlet-name>appServlet</servlet-name>

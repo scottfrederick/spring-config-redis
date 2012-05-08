@@ -8,4 +8,5 @@
 .springbeans
 .gradle
 target
+out
 build
