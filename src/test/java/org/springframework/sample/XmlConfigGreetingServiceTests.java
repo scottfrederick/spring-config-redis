@@ -13,7 +13,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:/spring/app-context.xml", loader = CustomXmlContextLoader.class)
+@ContextConfiguration(locations = "classpath:/META-INF/spring/app-context.xml", loader = CustomXmlContextLoader.class)
 @ActiveProfiles("test")
 public class XmlConfigGreetingServiceTests {
 

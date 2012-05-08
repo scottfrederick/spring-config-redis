@@ -18,7 +18,7 @@ public class GreetingAppXmlConfig {
 
     private ApplicationContext createAppContext() {
         ClassPathXmlApplicationContext context =
-                new ClassPathXmlApplicationContext(new String[]{"classpath:/spring/app-context.xml"}, false);
+                new ClassPathXmlApplicationContext(new String[]{"classpath:/META-INF/spring/app-context.xml"}, false);
 
         context.getEnvironment().getPropertySources().addFirst(getPropertySource());
 
@@ -29,7 +29,7 @@ public class GreetingAppXmlConfig {
 
     private PropertySource getPropertySource() {
         ClassPathXmlApplicationContext propertySourceContext =
-                new ClassPathXmlApplicationContext("classpath:/spring/property-source-context.xml");
+                new ClassPathXmlApplicationContext("classpath:/META-INF/spring/property-source-context.xml");
 
         return propertySourceContext.getBean(RedisPropertySource.class);
     }

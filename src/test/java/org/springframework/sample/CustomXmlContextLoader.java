@@ -10,7 +10,7 @@ public class CustomXmlContextLoader extends GenericXmlContextLoader {
     @Override
     protected void customizeContext(GenericApplicationContext context) {
         ClassPathXmlApplicationContext propertySourceContext =
-                new ClassPathXmlApplicationContext("classpath:/spring/property-source-context.xml");
+                new ClassPathXmlApplicationContext("classpath:/META-INF/spring/property-source-context.xml");
 
         PropertySource propertySource = propertySourceContext.getBean(RedisPropertySource.class);
 
