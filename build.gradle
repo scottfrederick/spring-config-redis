@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 
 apply plugin: 'jetty'
+apply plugin: 'war'
 
 sourceCompatibility = 1.6
 version = '1.0'
@@ -38,6 +39,9 @@ dependencies {
     compile(group: 'org.springframework.data', name: 'spring-data-redis', version: springDataRedisVersion) {
         exclude group: 'commons-logging'
     }
+
+    // Servlet
+    providedCompile "javax.servlet:javax.servlet-api:3.0.1"
 
     // Testing
     testCompile "org.springframework:spring-test:${springVersion}"
